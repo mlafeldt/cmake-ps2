@@ -1,0 +1,10 @@
+syntax: glob
+
+*.a
+*.o
+*.elf
+*.erl
+*.irx
+*.exe
+
+build/

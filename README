@@ -1,0 +1,12 @@
+
+DESCRIPTION
+
+This sample project shows you how the powerful build system CMake can be used
+for the PS2.
+
+
+USAGE
+
+$ cd build/
+$ cmake -DCMAKE_TOOLCHAIN_FILE=../toolchain-ee.cmake ..
+$ make
