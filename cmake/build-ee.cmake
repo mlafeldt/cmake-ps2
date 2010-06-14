@@ -22,6 +22,9 @@ LINK_DIRECTORIES("${PS2SDK}/ee/lib/")
 
 INCLUDE_DIRECTORIES("${PS2SDK}/ee/include/" "${PS2SDK}/common/include/")
 
+SET(_EE_CRT0 "${PS2SDK}/ee/startup/crt0.o")
+SET(_EE_LINKFILE "${PS2SDK}/ee/startup/linkfile")
+
 MACRO(_INIT_EE_FLAGS)
     SET(_EE_CFLAGS "-D_EE -O2 -G0 -Wall ${EE_CFLAGS}")
     SET(_EE_CXXFLAGS "-D_EE -O2 -G0 -Wall ${EE_CXXFLAGS}")
@@ -33,23 +36,21 @@ ENDMACRO(_INIT_EE_FLAGS)
 
 MACRO(EE_BUILD_BIN)
     _INIT_EE_FLAGS()
-    SET(_EE_CRT0 "${PS2SDK}/ee/startup/crt0.o")
-    SET(_EE_LINKFILE "${PS2SDK}/ee/startup/linkfile")
     SET(_EE_LIBS ${EE_LIBS} c kernel)
     ADD_EXECUTABLE(${EE_BIN} ${EE_SRCS} ${_EE_CRT0})
     SET(CMAKE_EXE_LINKER_FLAGS "-mno-crt0 -T${_EE_LINKFILE} ${_EE_LDFLAGS}")
     TARGET_LINK_LIBRARIES(${EE_BIN} ${_EE_LIBS})
 ENDMACRO(EE_BUILD_BIN)
 
+MACRO(EE_BUILD_ERL)
+    _INIT_EE_FLAGS()
+    ADD_EXECUTABLE(${EE_ERL} ${EE_SRCS})
+    SET(CMAKE_EXE_LINKER_FLAGS "-mno-crt0 -Wl,-r -Wl,-d ${_EE_LDFLAGS}")
+    ADD_CUSTOM_COMMAND(TARGET ${EE_ERL} POST_BUILD COMMAND ee-strip
+        ARGS --strip-unneeded -R .mdebug.eabi64 -R .reginfo -R .comment ${EE_ERL})
+ENDMACRO(EE_BUILD_ERL)
+
 MACRO(EE_BUILD_LIB)
     _INIT_EE_FLAGS()
     ADD_LIBRARY(${EE_LIB} ${EE_SRCS})
 ENDMACRO(EE_BUILD_LIB)
-
-MACRO(EE_BUILD_ERL)
-    _INIT_EE_FLAGS()
-    ADD_EXECUTABLE(${EE_ERL} ${EE_SRCS})
-    SET(CMAKE_EXE_LINKER_FLAGS "-mno-crt0 -Wl,-r ${_EE_LDFLAGS}")
-    ADD_CUSTOM_COMMAND(TARGET ${EE_ERL} POST_BUILD COMMAND ee-strip
-        ARGS --strip-unneeded -R .mdebug.eabi64 -R .reginfo -R .comment ${EE_ERL})
-ENDMACRO(EE_BUILD_ERL)
