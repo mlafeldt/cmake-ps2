@@ -18,8 +18,6 @@
 #  EE_ERL      - Name of EE ERL to build
 #
 
-INCLUDE(FindPS2SDK.cmake)
-
 LINK_DIRECTORIES("${PS2SDK}/ee/lib/")
 
 INCLUDE_DIRECTORIES("${PS2SDK}/ee/include/" "${PS2SDK}/common/include/")

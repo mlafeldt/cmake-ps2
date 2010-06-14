@@ -2,7 +2,8 @@ PROJECT("CMake PS2 Sample" C)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-INCLUDE(build-ee.cmake)
+INCLUDE(cmake/FindPS2SDK.cmake)
+INCLUDE(cmake/build-ee.cmake)
 
 SET(EE_SRCS hello.c)
 

@@ -8,5 +8,5 @@ for the PS2.
 USAGE
 
 $ cd build/
-$ cmake -DCMAKE_TOOLCHAIN_FILE=../toolchain-ee.cmake ..
+$ cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-ee.cmake ..
 $ make
