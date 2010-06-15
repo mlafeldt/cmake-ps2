@@ -8,7 +8,7 @@ SET(PS2SDK $ENV{PS2SDK})
 
 SET(EE_BIN hello.elf)
 SET(EE_SRCS hello.c)
-SET(EE_LIBS "")
+SET(EE_LIBS -ldebug)
 SET(EE_CFLAGS "")
 SET(EE_LDFLAGS "")
 

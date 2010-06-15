@@ -10,8 +10,8 @@ int main()
 {   
    SifInitRpc(0); 
 
-//   init_scr();
-//   scr_printf("Hello, world!\n"); // hello world in the screen
+   init_scr();
+   scr_printf("Hello, world!\n"); // hello world in the screen
 #if 0
    printf("Hello, world!\n");
    nprintf("Hello, again, from Naplink RPC!\n");
