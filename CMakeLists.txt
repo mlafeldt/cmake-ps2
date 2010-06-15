@@ -16,5 +16,17 @@ SET(CMAKE_C_FLAGS "-D_EE -O2 -G0 -Wall" ${EE_CFLAGS})
 SET(CMAKE_C_FLAGS_DEBUG ${CMAKE_C_FLAGS} "-DDEBUG")
 SET(CMAKE_EXE_LINKER_FLAGS "-mno-crt0 -T${EE_LINKFILE}" ${EE_LDFLAGS})
 
+# build elf
 ADD_EXECUTABLE(${EE_BIN} ${EE_SRCS} ${EE_CRT0})
 TARGET_LINK_LIBRARIES(${EE_BIN} ${EE_LIBS} c kernel)
+
+# build erl
+SET(EE_ERL hello.erl)
+ADD_EXECUTABLE(${EE_ERL} ${EE_SRCS})
+SET(CMAKE_EXE_LINKER_FLAGS "-mno-crt0 -Wl,-r -Wl,-d" ${EE_LDFLAGS})
+ADD_CUSTOM_COMMAND(TARGET ${EE_ERL} POST_BUILD COMMAND ee-strip
+    ARGS --strip-unneeded -R .mdebug.eabi64 -R .reginfo -R .comment ${EE_ERL})
+
+# build lib
+SET(EE_LIB hello)
+ADD_LIBRARY(${EE_LIB} ${EE_SRCS})
