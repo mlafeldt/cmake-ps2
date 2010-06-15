@@ -35,3 +35,6 @@ LINK_DIRECTORIES("${PS2SDK}/ee/lib")
 
 SET(EE_CRT0 "${PS2SDK}/ee/startup/crt0.o")
 SET(EE_LINKFILE "${PS2SDK}/ee/startup/linkfile")
+
+SET(PS2 1)
+SET(EE 1)
