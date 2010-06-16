@@ -1,0 +1,12 @@
+PROJECT("hello-erl" C)
+
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+
+SET(EE_ERL hello.erl)
+SET(EE_SRCS hello.c)
+SET(EE_LDFLAGS "")
+
+ADD_EXECUTABLE(${EE_ERL} ${EE_SRCS})
+SET(CMAKE_EXE_LINKER_FLAGS "-mno-crt0 -Wl,-r -Wl,-d ${EE_LDFLAGS}")
+ADD_CUSTOM_COMMAND(TARGET ${EE_ERL} POST_BUILD COMMAND ${CMAKE_STRIP}
+    ARGS --strip-unneeded -R .mdebug.eabi64 -R .reginfo -R .comment ${EE_ERL})
