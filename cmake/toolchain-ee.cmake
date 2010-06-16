@@ -33,9 +33,14 @@ INCLUDE_DIRECTORIES("${PS2SDK}/common/include")
 
 LINK_DIRECTORIES("${PS2SDK}/ee/lib")
 
-SET(EE_CRT0 "${PS2SDK}/ee/startup/crt0.o")
+SET(EE_CFLAGS "-D_EE -O2 -G0 -Wall" CACHE STRING "EE C compiler flags" FORCE)
+SET(EE_LDFLAGS "" CACHE STRING "EE linker flags" FORCE)
+SET(EE_ASFLAGS "-G0" CACHE STRING "EE assembler flags" FORCE)
+
+SET(EE_CRT0 "${PS2SDK}/ee/startup/crt0.o" CACHE FILEPATH "EE crt0 file" FORCE)
 SET_SOURCE_FILES_PROPERTIES(${EE_CRT0} PROPERTIES EXTERNAL_OBJECT TRUE)
-SET(EE_LINKFILE "${PS2SDK}/ee/startup/linkfile")
+
+SET(EE_LINKFILE "${PS2SDK}/ee/startup/linkfile" CACHE FILEPATH "EE linkfile" FORCE)
 
 SET(PS2 1)
 SET(EE 1)
