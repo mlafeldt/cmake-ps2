@@ -1,10 +1,10 @@
-PROJECT("hello" C)
+PROJECT("teapot" C)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-SET(EE_BIN hello.elf)
-SET(EE_SRCS hello.c)
-SET(EE_LIBS -ldebug)
+SET(EE_BIN teapot.elf)
+SET(EE_SRCS teapot.c)
+SET(EE_LIBS -ldraw -lgraph -lmath3d -lmf -lpacket -ldma)
 SET(EE_CFLAGS "")
 SET(EE_LDFLAGS "")
 
