@@ -4,3 +4,12 @@ for the PS2.
 To build a sample:
 
 $ ./build.sh <source directory>
+
+
+STATUS
+
+EE BIN  - Compiles fine. Can't get crt0.o to be the first object linked in.
+EE ERL  - Output is the same as with Makefile.
+EE LIB  - CMake runs "ee-ar cr" and "ee-ranlib" instead of "ee-rd cru". Problem?
+IOP BIN - Not supported yet.
+IOP LIB - Not supported yet.
