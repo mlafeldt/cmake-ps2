@@ -12,6 +12,8 @@ EE_ERL = hello.erl
 EE_OBJS = hello.o
 
 all: $(EE_ERL)
+	ee-readelf -e $(EE_ERL)
+	md5sum $(EE_ERL)
 
 clean:
 	rm -f *.erl *.o *.a

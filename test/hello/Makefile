@@ -11,8 +11,12 @@
 EE_BIN = hello.elf
 EE_OBJS = hello.o
 EE_LIBS = -ldebug
+EE_LDFLAGS = -s
 
 all: $(EE_BIN)
+	ee-readelf -e $(EE_BIN)
+	ee-size $(EE_BIN)
+	md5sum $(EE_BIN)
 
 clean:
 	rm -f *.elf *.o *.a
