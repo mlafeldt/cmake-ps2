@@ -12,6 +12,7 @@ EE_OBJS = src/grammar.o src/libconfig.o src/scanctx.o src/scanner.o src/strbuf.o
 EE_LIBS =
 
 all: $(EE_LIB)
+	md5sum $(EE_LIB)
 
 install: all
 	mkdir -p $(PS2SDK)/ports/include
