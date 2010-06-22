@@ -10,9 +10,10 @@
 EE_BIN = teapot.elf
 EE_OBJS = teapot.o
 EE_LIBS = -ldraw -lgraph -lmath3d -lmf -lpacket -ldma
+EE_CFLAGS = -s
 
 all: $(EE_BIN)
-#	ee-strip --strip-all $(EE_BIN)
+	md5sum $(EE_BIN)
 
 clean:
 	rm -f *.elf *.o *.a
