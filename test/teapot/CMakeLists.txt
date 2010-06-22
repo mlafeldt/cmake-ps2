@@ -7,7 +7,6 @@ SET(EE_SRCS teapot.c)
 SET(EE_LIBS -ldraw -lgraph -lmath3d -lmf -lpacket -ldma)
 
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s")
-SET(CMAKE_EXE_LINKER_FLAGS)
 
 ADD_EXECUTABLE(${EE_BIN} ${EE_SRCS})
 TARGET_LINK_LIBRARIES(${EE_BIN} ${EE_LIBS})
