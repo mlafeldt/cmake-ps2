@@ -1,17 +1,26 @@
-This sample project shows you how the powerful build system CMake can be used
-for the PS2.
+CMake for PS2
 
-First, copy cmake/EE.cmake to /usr/share/cmake-<VERSION>/Modules/Platform/.
+The purpose of this project is to bring the powerful CMake build system to the
+PS2 console.
+
+CMake scripts are being developed for both PS2 processors - EE and IOP - getting
+the most out of the PS2 toolchain.
+
+
+Getting started
+
+First, copy cmake/EE.cmake and cmake/IOP.cmake to
+/usr/share/cmake-<VERSION>/Modules/Platform/.
 
 Now you can build the samples:
 
-$ ./build.sh <sample source directory>
+$ cd cmake-ps2
+$ ./build.sh <ee|iop> <sample source directory>
 
 
-STATUS
+Status
 
-EE BIN  - Output is the same as with Makefile.
-EE ERL  - Output is the same as with Makefile.
-EE LIB  - Output seems to be the same as with Makefile.
-IOP BIN - Not supported yet.
-IOP LIB - Not supported yet.
+There are already more or less working CMake scripts for EE including a
+toolchain and a platform system file.
+
+IOP support is in the works.
