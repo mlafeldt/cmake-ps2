@@ -13,9 +13,7 @@ ADD_CUSTOM_COMMAND(OUTPUT ${out_f}
     COMMAND echo "#include \"irx_imports.h\"" > ${out_f}
     COMMAND cat ${CMAKE_CURRENT_SOURCE_DIR}/imports.lst >> ${out_f}
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/imports.lst
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    COMMENT "Creating ${out_f}"
-    VERBATIM
+    COMMENT "Creating ${out_f}" VERBATIM
 )
 
 SET(out_f "${CMAKE_CURRENT_BINARY_DIR}/build-exports.c")
@@ -23,9 +21,7 @@ ADD_CUSTOM_COMMAND(OUTPUT ${out_f}
     COMMAND echo "#include \"irx.h\"" > ${out_f}
     COMMAND cat ${CMAKE_CURRENT_SOURCE_DIR}/exports.tab >> ${out_f}
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/exports.tab
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    COMMENT "Creating ${out_f}"
-    VERBATIM
+    COMMENT "Creating ${out_f}" VERBATIM
 )
 
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -fno-builtin -DNETLOG_RPC")
