@@ -15,12 +15,12 @@ First, copy cmake/EE.cmake and cmake/IOP.cmake to
 Now you can build the samples:
 
 $ cd cmake-ps2
-$ ./build.sh <ee|iop> <sample source directory>
+$ ./build.sh test/ee/      # build all ee samples
+$ ./build.sh test/iop/     # build all iop samples
+$ ./build.sh test/hello/   # build specific sample
 
 
 Status
 
-There are already more or less working CMake scripts for EE including a
-toolchain and a platform system file.
-
-IOP support is in the works.
+There are already more or less working CMake scripts for EE and IOP including
+toolchain and a platform system files.
