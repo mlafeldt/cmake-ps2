@@ -1,7 +1,12 @@
 #!/bin/bash
 
-arch=${1:?"arch missing"}
-dir=${2:?"source directory missing"}
+dir=${1:?"source directory missing"}
+
+if grep -q "test/ee" <<< "${dir}"; then
+    arch="ee"
+else
+    arch="iop"
+fi
 
 cd build || exit 1
 rm -rf *
