@@ -2,7 +2,7 @@ PROJECT("hello" C)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-SET(EE_BIN hello)
+SET(EE_BIN hello.elf)
 SET(EE_SRCS hello.c)
 SET(EE_LIBS -ldebug)
 

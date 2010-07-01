@@ -4,7 +4,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
 
-SET(IOP_BIN netlog)
+SET(IOP_BIN netlog.irx)
 SET(IOP_SRCS netlog.c udpcl.c xprintf.c build-exports.c build-imports.c)
 SET(IOP_LIBS)
 

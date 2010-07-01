@@ -2,4 +2,4 @@ PROJECT("hello-erl" C)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-ADD_LIBRARY(hello SHARED hello.c)
+ADD_LIBRARY(hello.erl SHARED hello.c)

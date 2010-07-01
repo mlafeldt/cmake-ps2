@@ -2,7 +2,7 @@ PROJECT("teapot" C)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-SET(EE_BIN teapot)
+SET(EE_BIN teapot.elf)
 SET(EE_SRCS teapot.c)
 SET(EE_LIBS -ldraw -lgraph -lmath3d -lmf -lpacket -ldma)
 
