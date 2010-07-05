@@ -10,6 +10,6 @@ fi
 
 cd build || exit 1
 rm -rf *
-cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-${arch}.cmake \
+cmake -DCMAKE_USE_RELATIVE_PATHS=TRUE -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-${arch}.cmake \
     "../${dir}" || exit 1
 make

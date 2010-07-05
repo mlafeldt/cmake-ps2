@@ -5,24 +5,11 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
 
 SET(IOP_BIN netlog.irx)
-SET(IOP_SRCS netlog.c udpcl.c xprintf.c build-exports.c build-imports.c)
+SET(IOP_SRCS netlog.c udpcl.c xprintf.c exports.c imports.c)
 SET(IOP_LIBS)
 
-SET(out_f "${CMAKE_CURRENT_BINARY_DIR}/build-imports.c")
-ADD_CUSTOM_COMMAND(OUTPUT ${out_f}
-    COMMAND echo "#include \"irx_imports.h\"" > ${out_f}
-    COMMAND cat ${CMAKE_CURRENT_SOURCE_DIR}/imports.lst >> ${out_f}
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/imports.lst
-    COMMENT "Creating ${out_f}" VERBATIM
-)
-
-SET(out_f "${CMAKE_CURRENT_BINARY_DIR}/build-exports.c")
-ADD_CUSTOM_COMMAND(OUTPUT ${out_f}
-    COMMAND echo "#include \"irx.h\"" > ${out_f}
-    COMMAND cat ${CMAKE_CURRENT_SOURCE_DIR}/exports.tab >> ${out_f}
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/exports.tab
-    COMMENT "Creating ${out_f}" VERBATIM
-)
+BUILD_IOP_EXPORTS(exports.c ${CMAKE_CURRENT_SOURCE_DIR}/exports.tab)
+BUILD_IOP_IMPORTS(imports.c ${CMAKE_CURRENT_SOURCE_DIR}/imports.lst)
 
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -fno-builtin -DNETLOG_RPC")
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s")

@@ -63,6 +63,25 @@ SET(CMAKE_CXX_LINK_MODULE_LIBRARY)
 SET(CMAKE_C_LINK_MODULE_LIBRARY)
 
 
+FUNCTION(BUILD_IOP_IMPORTS out_f in_f)
+    ADD_CUSTOM_COMMAND(OUTPUT ${out_f}
+        COMMAND echo "#include \"irx_imports.h\"" > ${out_f}
+        COMMAND cat ${in_f} >> ${out_f}
+        DEPENDS ${in_f}
+        COMMENT "Creating ${out_f}" VERBATIM
+    )
+ENDFUNCTION()
+
+FUNCTION(BUILD_IOP_EXPORTS out_f in_f)
+    ADD_CUSTOM_COMMAND(OUTPUT ${out_f}
+        COMMAND echo "#include \"irx.h\"" > ${out_f}
+        COMMAND cat ${in_f} >> ${out_f}
+        DEPENDS ${in_f}
+        COMMENT "Creating ${out_f}" VERBATIM
+    )
+ENDFUNCTION()
+
+
 # build IOP_BIN
 SET(CMAKE_C_LINK_EXECUTABLE
     "<CMAKE_C_COMPILER> <FLAGS> <CMAKE_C_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>"
